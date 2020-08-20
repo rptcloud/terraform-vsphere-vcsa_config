@@ -7,14 +7,14 @@ variable "vcconfig_compute_cluster_name" {
   default     = "tf-compute-cluster"
 }
 
-variable "vcconfig_vcssopassword" {
-  description = "SSO password for vcenter server"
-}
+# variable "vcconfig_vcssopassword" {
+#   description = "SSO password for vcenter server"
+# }
 
-variable "vcconfig_vcssousername" {
-  description = "SSO username for vcenter server"
-  default     = "administrator@vsphere.local"
-}
+# variable "vcconfig_vcssousername" {
+#   description = "SSO username for vcenter server"
+#   default     = "administrator@vsphere.local"
+# }
 
 variable "network_interfaces" {
   default = [
@@ -24,9 +24,9 @@ variable "network_interfaces" {
     "vmnic3",
   ]
 }
-variable "vcconfig_vcip" {
-  description = "ip address"
-}
+# variable "vcconfig_vcip" {
+#   description = "ip address"
+# }
 
 variable "vcconfig_resourcepool" {
   description = "Resource pool name"

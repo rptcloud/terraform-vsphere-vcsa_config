@@ -1,7 +1,7 @@
 provider "vsphere" {
-  user           = var.vcconfig_vcssousername
-  password       = var.vcconfig_vcssopassword
-  vsphere_server = var.vcconfig_vcip
+  user           = data.terraform_remote_state.vcbuild.outputs.vcenter_username
+  password       = data.terraform_remote_state.vcbuild.outputs.vcenter_password
+  vsphere_server = data.terraform_remote_state.vcbuild.outputs.vcenter_ip_address
 
   # If you have a self-signed cert
   allow_unverified_ssl = true
@@ -21,7 +21,7 @@ resource "vsphere_compute_cluster" "compute_cluster" {
   datacenter_id        = data.vsphere_datacenter.dc.id
   drs_enabled          = true
   drs_automation_level = "fullyAutomated"
-  ha_enabled           = true
+  ha_enabled           = false
 }
 
 data "vsphere_compute_cluster" "compute_cluster" {
@@ -62,4 +62,20 @@ resource "vsphere_distributed_virtual_switch" "dvs" {
   uplinks         = ["uplink1", "uplink2", "uplink3", "uplink4"]
   active_uplinks  = ["uplink1", "uplink2"]
   standby_uplinks = ["uplink3", "uplink4"]
-  }
+}
+ data "vsphere_host_thumbprint" "thumbprint" {
+   count = length(data.terraform_remote_state.hytrust_env_1_dev.outputs.ESXi_hostnames)
+   address = element(data.terraform_remote_state.hytrust_env_1_dev.outputs.ESXi_hostnames, count.index)
+   insecure = true
+ }
+
+resource "vsphere_host" "esxi" {
+  depends_on = [data.vsphere_host_thumbprint.thumbprint]
+  count = length(data.terraform_remote_state.hytrust_env_1_dev.outputs.ESXi_IP_addresses)
+  hostname = element(data.terraform_remote_state.hytrust_env_1_dev.outputs.ESXi_IP_addresses, count.index)
+  username = "root"
+  password = data.terraform_remote_state.hytrust_env_1_dev.outputs.ESXi_root_password
+  thumbprint = element(data.vsphere_host_thumbprint.thumbprint[*].id, count.index)
+  #license  = "00000-00000-00000-00000i-00000"
+  cluster  = data.vsphere_compute_cluster.compute_cluster.id
+}
