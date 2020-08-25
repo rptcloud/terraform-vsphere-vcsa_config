@@ -1,18 +1,10 @@
-data "terraform_remote_state" "vcbuild" {
-  backend = "local"
-
-  config = {
-    path = "../terraform-vcbuild-hytrust/terraform.tfstate"
-  }
-}
-
-data "terraform_remote_state" "hytrust_env_1_dev" {
+data "terraform_remote_state" "vmware_tfc_env1" {
   backend = "remote"
 
   config = {
     organization = "RPTData"
     workspaces = {
-      name = "hytrust_env_1_dev"
+      name = "vmware-lab-buildout-env1"
     }
   }
 }
