@@ -7,6 +7,15 @@ variable "vcconfig_compute_cluster_name" {
   default     = "tf-compute-cluster"
 }
 
+variable "network_interfaces" {
+  default = [
+    "vmnic0",
+    "vmnic1",
+    "vmnic2",
+    "vmnic3",
+  ]
+}
+
 variable "vcconfig_resourcepool" {
   description = "Resource pool name"
 }
