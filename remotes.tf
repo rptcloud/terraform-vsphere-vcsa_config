@@ -17,9 +17,9 @@ data "terraform_remote_state" "vmware_tfc_env1" {
   backend = "remote"
 
   config = {
-    organization = "RPTData"
+    organization = var.vcconfig_tfc_org
     workspaces = {
-      name = "vmware-lab-buildout-env1"
+      name = var.vcconfig_tfc_workspace
     }
   }
 }

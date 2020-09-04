@@ -38,3 +38,11 @@ variable "vcconfig_resourcepool" {
 variable "vcconfig_dvs" {
   description = "Distributed virtual switch name"
 }
+
+variable "vcconfig_tfc_org" {
+  description = "Terraform Cloud organization name"
+}
+
+variable "vcconfig_tfc_workspace" {
+  description = "Terraform Cloud workspace name"
+}
