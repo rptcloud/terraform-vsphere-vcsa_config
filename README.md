@@ -1,7 +1,7 @@
 [![Maintained by River Point Technology](https://img.shields.io/badge/maintained%20by-River%20Point%20Technology-%235849a6.svg)](https://www.riverpointtechnology.com)
 # VMware VCSA-config Module
 
-This repo contains a set of modules for configuring a [VMware VCSA](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcsa.doc/GUID-223C2821-BD98-4C7A-936B-7DBE96291BA4.html) virtual center with Nested [VMware](https://www.vmware.com/) hypervisor using [Terraform](https://www.terraform.io/).
+This repo contains a module for configuring a [VMware VCSA](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcsa.doc/GUID-223C2821-BD98-4C7A-936B-7DBE96291BA4.html) vCenter with Nested [VMware](https://www.vmware.com/) hypervisor using [Terraform](https://www.terraform.io/).
 
 The vCenter Server Appliance is a preconfigured Linux virtual machine, which is optimized for running VMware vCenter Server® and the associated services on Linux.
 
