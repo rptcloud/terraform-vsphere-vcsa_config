@@ -19,3 +19,9 @@ Prerequisites/Notes:
 
 * **Both modules (VCSA Build and Nested ESXi) must be run first**: This module uses the outputs from each of the aforementioned modules as inputs to configure VCSA.  If those outputs are not available, this module will fail to run. 
 * **Add/remove hosts and Cluster destruction**: If you adjust the host count in the Nested ESXi module, you will need to run/trigger this module again to adjust the VCSA configuration appropriately.  If the environment needs to be destroyed completely, please first disconnect and remove hosts from the Cluster, and destroy in reverse order (VCSA Config, VCSA Build, and Nested ESXi).  The VCSA will need to be manually deleted from your primary cluster as it does not live in .tfstate.
+
+## License
+
+This code is released under the MIT License. Please see [LICENSE](https://github.com/rptcloud/terraform-vsphere-vcsa_config/blob/master/LICENSE.txt) for more details.
+
+Copyright &copy; 2020 River Point Technology
